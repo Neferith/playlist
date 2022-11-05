@@ -3,7 +3,9 @@ package com.nef.playlist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.nef.playlist.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
