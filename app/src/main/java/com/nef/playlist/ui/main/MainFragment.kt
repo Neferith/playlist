@@ -1,15 +1,14 @@
 package com.nef.playlist.ui.main
 
-import androidx.lifecycle.ViewModelProvider
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.*
-import androidx.core.view.MenuProvider
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
 import com.nef.playlist.R
+import com.nef.playlist.data.network.hasNetwork
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -18,13 +17,7 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private val viewModel by viewModels<MainViewModel>()//viewModel: MainViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-      //  viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,10 +28,12 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.syncData()
+        if(hasNetwork(requireContext())) {
+            viewModel.syncData()
+        }
 
         viewModel.playlistLiveData.observe(viewLifecycleOwner) {
-            Log.d("TAG","TESTONS")
+            //TODO : Not impletemented yet
         }
     }
 
