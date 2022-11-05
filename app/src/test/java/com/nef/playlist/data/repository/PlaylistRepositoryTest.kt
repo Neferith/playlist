@@ -9,7 +9,7 @@ import com.nef.playlist.data.dao.PlaylistDao
 import com.nef.playlist.data.network.api.PlaylistApi
 import com.nef.playlist.data.network.api.PlaylistMapper
 import com.nef.playlist.data.network.api.PlaylistResponseItem
-import com.nef.playlist.model.PlaylistEntity
+import com.nef.playlist.data.model.PlaylistEntity
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.confirmVerified

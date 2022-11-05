@@ -1,7 +1,7 @@
 package com.nef.playlist.data.network.api
 
 import com.frontparissportifs.utils.EntityMapper
-import com.nef.playlist.model.PlaylistEntity
+import com.nef.playlist.data.model.PlaylistEntity
 import javax.inject.Inject
 
 class PlaylistMapper @Inject
