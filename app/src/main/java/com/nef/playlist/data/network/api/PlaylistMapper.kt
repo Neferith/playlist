@@ -14,7 +14,7 @@ constructor() : EntityMapper<PlaylistResponseItem, PlaylistEntity> {
             title = entity.title,
             url = entity.url,
             thumbnail = entity.thumbnailUrl
-        )
+          )
     }
 
     override fun mapToEntity(domainModel: PlaylistEntity): PlaylistResponseItem {

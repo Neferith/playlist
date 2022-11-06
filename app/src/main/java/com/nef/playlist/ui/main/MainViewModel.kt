@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val coroutineDispatcherProvider: CoroutineDispatcherProvider,
-    val getProjectsUseCase: GetPlaylistsUserCase
+    private val getProjectsUseCase: GetPlaylistsUserCase
     ) : ViewModel() {
 
     val playlistLiveData: MutableLiveData<List<PlaylistEntity>> = MutableLiveData()
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     init {
        viewModelScope.launch(coroutineDispatcherProvider.io) {
 
-           getProjectsUseCase.invoke(false).onEach { playlistLiveData.value = it }.launchIn(
+           getProjectsUseCase.invoke(true).onEach { playlistLiveData.value = it }.launchIn(
                MainScope()
            )
        }
@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
     fun syncData() {
         viewModelScope.launch(coroutineDispatcherProvider.io) {
 
-            getProjectsUseCase.invoke(true).onEach { playlistLiveData.value = it }.launchIn(
+            getProjectsUseCase.invoke(false).onEach { playlistLiveData.value = it }.launchIn(
                 MainScope()
             )
         }

@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.nef.playlist.R
 import com.nef.playlist.data.network.hasNetwork
+import com.nef.playlist.databinding.FragmentMainBinding
+import com.nef.playlist.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +19,7 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
+    private val binding by viewBinding { FragmentMainBinding.bind(it) }
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreateView(
@@ -32,8 +35,12 @@ class MainFragment : Fragment() {
             viewModel.syncData()
         }
 
+        val adapter = PlaylistAdapter()
+        binding.tasksRecyclerView.adapter = adapter
+
         viewModel.playlistLiveData.observe(viewLifecycleOwner) {
             //TODO : Not impletemented yet
+            adapter.submitList(it)
         }
     }
 
