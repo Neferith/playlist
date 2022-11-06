@@ -14,6 +14,7 @@ class PlaylistRepository @Inject constructor(
     private val playlistMapper: PlaylistMapper
 ) {
 
+    //@TODO : A optimiser, ne pas attendre la fin de l'insertion pour renvoyer le flow
     suspend fun getPlaylistFromNetwork():List<PlaylistEntity> {
         val playlistApi = playlistApi.getAll()
         val convertApiPlaylists = playlistMapper.mapFromEntityList(playlistApi)
