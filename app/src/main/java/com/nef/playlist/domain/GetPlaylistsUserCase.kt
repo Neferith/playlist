@@ -16,7 +16,9 @@ class GetPlaylistsUserCase @Inject constructor(
         if(useCache) {
             emit(playlistRepository.getPlaylistFromCache())
         } else {
-            emit(playlistRepository.getPlaylistFromNetwork())
+            val res = playlistRepository.getPlaylistFromNetwork()
+            emit(res)
+            playlistRepository.insertInCache(res)
         }
     }
 

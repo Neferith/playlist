@@ -18,11 +18,17 @@ class PlaylistRepository @Inject constructor(
     suspend fun getPlaylistFromNetwork():List<PlaylistEntity> {
         val playlistApi = playlistApi.getAll()
         val convertApiPlaylists = playlistMapper.mapFromEntityList(playlistApi)
-        for (playlist in convertApiPlaylists) {
-            playlistDao.insert(cacheMapper.mapToEntity(playlist))
-        }
+        //for (playlist in convertApiPlaylists) {
+          //  playlistDao.insert(cacheMapper.mapToEntity(playlist))
+        //}
         return convertApiPlaylists
 
+    }
+
+    suspend fun insertInCache(playlists:List<PlaylistEntity> ) {
+        for (playlist in playlists) {
+            playlistDao.insert(cacheMapper.mapToEntity(playlist))
+        }
     }
 
     suspend fun getPlaylistFromCache():List<PlaylistEntity> {

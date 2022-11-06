@@ -45,10 +45,10 @@ class PlaylistAdapter : ListAdapter<PlaylistEntity, PlaylistAdapter.PlaylistView
         fun bind(item: PlaylistEntity) {
 
             // HACK : Les images ne chargent pas avec l'user agent android (erreur 410)
-            // Ca passe en changeant le user agent.
+            // Ca passe en changeant le user agent et en demande une image .JPG.
             val url = GlideUrl(
-                item.thumbnail, LazyHeaders.Builder()
-                    .addHeader("User-Agent", "user-agent-custom")
+                item.thumbnail+".JPG", LazyHeaders.Builder()
+                    .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
                     .build()
             )
 
