@@ -9,15 +9,15 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.model.GlideUrl
-import com.bumptech.glide.load.model.LazyHeaders
 import com.nef.playlist.R
 import com.nef.playlist.data.model.PlaylistEntity
+import com.nef.playlist.ui.utils.ImageLoader
 import kotlinx.android.synthetic.main.playlist_item.view.*
 
 
-class PlaylistAdapter : ListAdapter<PlaylistEntity, PlaylistAdapter.PlaylistViewHolder>(
+class PlaylistAdapter(val imageLoader: ImageLoader) :
+    ListAdapter<PlaylistEntity,
+            PlaylistAdapter.PlaylistViewHolder>(
     PlaylistDiffCallback
 ) {
 
@@ -31,7 +31,7 @@ class PlaylistAdapter : ListAdapter<PlaylistEntity, PlaylistAdapter.PlaylistView
     }
 
     override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
-        holder.bind(item = getItem(position) as PlaylistEntity)
+        holder.bind(item = getItem(position) as PlaylistEntity, imageLoader)
     }
 
     override fun getItemViewType(position: Int): Int = 1
@@ -42,21 +42,10 @@ class PlaylistAdapter : ListAdapter<PlaylistEntity, PlaylistAdapter.PlaylistView
         private val title:TextView = view.task_item_TextView_description
 
 
-        fun bind(item: PlaylistEntity) {
-
-            // HACK : Les images ne chargent pas avec l'user agent android (erreur 410)
-            // Ca passe en changeant le user agent et en demande une image .JPG.
-            val url = GlideUrl(
-                item.thumbnail+".JPG", LazyHeaders.Builder()
-                    .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
-                    .build()
-            )
+        fun bind(item: PlaylistEntity,imageLoader: ImageLoader) {
 
             title.text = item.title
-            Glide.with(this.itemLayout).load(url)
-                .placeholder(com.google.android.material.R.color.material_grey_300)
-                .error(com.google.android.material.R.color.material_grey_300)
-                .into(this.image)
+            imageLoader.loadImageInView(this.itemLayout,this.image,item.thumbnail)
 
         }
     }
@@ -72,4 +61,5 @@ class PlaylistAdapter : ListAdapter<PlaylistEntity, PlaylistAdapter.PlaylistView
             newItem: PlaylistEntity
         ): Boolean = oldItem == newItem
     }
+
 }

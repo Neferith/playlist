@@ -1,5 +1,6 @@
 package com.nef.playlist.domain
 
+import com.frontparissportifs.utils.DataState
 import com.nef.playlist.data.model.PlaylistEntity
 import com.nef.playlist.data.repository.PlaylistRepository
 import kotlinx.coroutines.flow.Flow
@@ -12,14 +13,18 @@ class GetPlaylistsUserCase @Inject constructor(
 
     suspend fun invoke(
         useCache:Boolean
-    ):Flow<List<PlaylistEntity>> = flow {
-        if(useCache) {
-            emit(playlistRepository.getPlaylistFromCache())
-        } else {
-            val res = playlistRepository.getPlaylistFromNetwork()
-            emit(res)
-            playlistRepository.insertInCache(res)
-        }
+    ):Flow<DataState<List<PlaylistEntity>>> = flow {
+       try {
+           if(useCache) {
+               emit(DataState.Success(playlistRepository.getPlaylistFromCache()))
+           } else {
+               val res = playlistRepository.getPlaylistFromNetwork()
+               emit(DataState.Success(res))
+               playlistRepository.insertInCache(res)
+           }
+       } catch (e: Exception) {
+           emit(DataState.Error(e))
+       }
     }
 
 }

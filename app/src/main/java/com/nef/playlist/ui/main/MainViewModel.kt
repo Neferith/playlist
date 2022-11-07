@@ -3,6 +3,7 @@ package com.nef.playlist.ui.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.frontparissportifs.utils.DataState
 import com.nef.playlist.data.model.PlaylistEntity
 import com.nef.playlist.domain.CoroutineDispatcherProvider
 import com.nef.playlist.domain.GetPlaylistsUserCase
@@ -19,7 +20,7 @@ class MainViewModel @Inject constructor(
     private val getProjectsUseCase: GetPlaylistsUserCase
     ) : ViewModel() {
 
-    val playlistLiveData: MutableLiveData<List<PlaylistEntity>> = MutableLiveData()
+    val playlistLiveData: MutableLiveData<DataState<List<PlaylistEntity>>> = MutableLiveData()
 
     init {
        viewModelScope.launch(coroutineDispatcherProvider.io) {

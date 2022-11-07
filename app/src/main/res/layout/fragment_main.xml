@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tasks_RecyclerView"
         android:layout_width="0dp"
@@ -18,5 +24,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/playlist_item"
         />
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
