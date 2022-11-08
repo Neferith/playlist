@@ -30,5 +30,4 @@ constructor() : EntityMapper<PlaylistResponseItem, PlaylistEntity> {
     fun mapFromEntityList(entities: List<PlaylistResponseItem>): List<PlaylistEntity> {
         return entities.map { mapFromEntity(it) }
     }
-
 }

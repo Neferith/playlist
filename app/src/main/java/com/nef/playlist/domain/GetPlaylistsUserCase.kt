@@ -24,9 +24,6 @@ class GetPlaylistsUserCase @Inject constructor(
             playlistRepository.insertInCache(res)
         }
     }.catch { e ->
-
         emit(DataState.Error(e))
-
     }
-
 }

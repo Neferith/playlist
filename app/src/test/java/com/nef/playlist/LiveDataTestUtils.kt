@@ -1,7 +1,10 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package com.nef.playlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runCurrent
 

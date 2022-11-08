@@ -91,7 +91,7 @@ class PlaylistRepositoryTest {
     @Test
     fun `insert data case`()  = testCoroutineRule.runTest {
         // When
-        val result = playlistRepository.insertInCache(GET_ALL_FROM_API)
+       playlistRepository.insertInCache(GET_ALL_FROM_API)
 
         // Then
         io.mockk.coVerify(exactly = 3) { projectDao.insert(any()) }

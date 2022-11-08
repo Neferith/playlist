@@ -2,17 +2,15 @@ package com.nef.playlist.domain
 
 import assertk.assertThat
 import assertk.assertions.isEqualTo
-import com.nef.playlist.utils.DataState
 import com.nef.playlist.TestCoroutineRule
 import com.nef.playlist.data.model.PlaylistEntity
 import com.nef.playlist.data.repository.PlaylistRepository
-import io.mockk.MockK
+import com.nef.playlist.utils.DataState
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

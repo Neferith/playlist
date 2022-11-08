@@ -14,14 +14,9 @@ class PlaylistRepository @Inject constructor(
     private val playlistMapper: PlaylistMapper
 ) {
 
-    //@TODO : A optimiser, ne pas attendre la fin de l'insertion pour renvoyer le flow
-    suspend fun getPlaylistFromNetwork():List<PlaylistEntity> {
+    suspend fun getPlaylistFromNetwork(): List<PlaylistEntity> {
         val playlistApi = playlistApi.getAll()
-        val convertApiPlaylists = playlistMapper.mapFromEntityList(playlistApi)
-        //for (playlist in convertApiPlaylists) {
-          //  playlistDao.insert(cacheMapper.mapToEntity(playlist))
-        //}
-        return convertApiPlaylists
+        return playlistMapper.mapFromEntityList(playlistApi)
 
     }
 
@@ -31,10 +26,9 @@ class PlaylistRepository @Inject constructor(
         }
     }
 
-    suspend fun getPlaylistFromCache():List<PlaylistEntity> {
+    suspend fun getPlaylistFromCache(): List<PlaylistEntity> {
         val playlistCache = playlistDao.getAll()
-        val convertCachePlaylists = cacheMapper.mapFromEntityList(playlistCache)
-        return convertCachePlaylists
-
+        return cacheMapper.mapFromEntityList(playlistCache)
     }
+
 }

@@ -10,18 +10,16 @@ import com.nef.playlist.domain.GetPlaylistsUserCase
 import com.nef.playlist.observeForTesting
 import com.nef.playlist.utils.DataState
 import io.mockk.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MainViewModelTest {
 
     companion object {
-        private val GET_ALL_FLOW_CACHE:List<PlaylistEntity> = listOf(mockk(), mockk(), mockk())
-        private val SUCCESS_CACHE = DataState.Success(GET_ALL_FLOW_CACHE)
-        private val GET_ALL_FLOW_WITHOUT_CACHE: List<PlaylistEntity> = listOf(mockk(), mockk(), mockk())
-        private val SUCCESS_WITHOUT_CACHE = DataState.Success(GET_ALL_FLOW_WITHOUT_CACHE)
         private val SUCCESS = DataState.Success<List<PlaylistEntity>>(mockk())
         private val SUCCESS_WITHOUT_CACHE_F = flowOf(
             DataState.Loading,
