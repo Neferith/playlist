@@ -31,6 +31,7 @@ koverMerged {
         classes {
             excludes.addAll(
                     // Hilt
+                    "hilt_aggregated_deps.*",
                     "dagger.hilt.*",
                     "hilt_aggregated_deps.*",
                     "*_Factory",
@@ -52,8 +53,8 @@ koverMerged {
 
                     // TODO : Remove below when Kover can handle Android integration tests!
                     // Android UI
-                    "*MainApplication",
-                    "*MainApplication\$*",
+                    "*PlaylistApplication",
+                    "*PlaylistApplication\$*",
                     "*Fragment",
                     "*Fragment\$*",
                     "*Activity",

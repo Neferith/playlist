@@ -41,6 +41,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -92,6 +96,18 @@ dependencies {
     testImplementation "io.mockk:mockk:1.12.7"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
     testImplementation 'com.willowtreeapps.assertk:assertk-jvm:0.25'
+
+    // Work
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    testImplementation ('androidx.arch.core:core-testing:2.1.0') {
+        // Removes the Mockito dependency bundled with arch core
+        exclude group: "org.mockito", module: "mockito-core"
+    }
+
+
 }
 
 kover {

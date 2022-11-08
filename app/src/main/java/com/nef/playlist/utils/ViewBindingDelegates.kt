@@ -1,8 +1,6 @@
 package com.nef.playlist.utils
 
-import android.view.LayoutInflater
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
@@ -11,13 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
-
-/** Activity binding delegate, may be used since onCreate up to onDestroy (inclusive) */
-inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
-    crossinline factory: (LayoutInflater) -> T,
-) = lazy(LazyThreadSafetyMode.NONE) {
-    factory(layoutInflater)
-}
 
 /** Fragment binding delegate, may be used since onViewCreated up to onDestroyView (inclusive) */
 inline fun <T : ViewBinding> Fragment.viewBinding(

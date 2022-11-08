@@ -9,13 +9,18 @@ import javax.inject.Inject
 
 class ImageLoaderImpl @Inject constructor():ImageLoader {
 
-    override fun loadImageInView(parent:View, image:ImageView, url:String) {
 
-        val url = GlideUrl(
+    fun generateGlideUrl(url:String):GlideUrl {
+        return  GlideUrl(
             url+".JPG", LazyHeaders.Builder()
                 .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36")
                 .build()
         )
+    }
+
+    override fun loadImageInView(parent:View, image:ImageView, url:String) {
+
+        val url = generateGlideUrl(url)
 
         Glide.with(parent).load(url)
             .placeholder(com.google.android.material.R.color.material_grey_300)

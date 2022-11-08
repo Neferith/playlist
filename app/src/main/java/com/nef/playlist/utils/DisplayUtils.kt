@@ -1,7 +1,6 @@
 package com.nef.playlist.utils
 
 import android.content.Context
-import android.content.res.Resources
 import android.widget.Toast
 
 fun displayError(context: Context, message: String?) {
@@ -11,6 +10,3 @@ fun displayError(context: Context, message: String?) {
         Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show()
     }
 }
-
-val Int.px: Int
-    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
