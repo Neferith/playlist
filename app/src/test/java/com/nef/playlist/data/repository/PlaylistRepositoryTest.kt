@@ -82,9 +82,21 @@ class PlaylistRepositoryTest {
         io.mockk.coVerify(exactly = 0) { cacheMapper.mapFromEntityList(GET_ALL_DAO)}
         io.mockk.coVerify(exactly = 1) { playlistApi.getAll() }
         io.mockk.coVerify(exactly = 1) { playlistMapper.mapFromEntityList(GET_ALL_API) }
+
+        confirmVerified(playlistApi)
+
+    }
+
+
+    @Test
+    fun `insert data case`()  = testCoroutineRule.runTest {
+        // When
+        val result = playlistRepository.insertInCache(GET_ALL_FROM_API)
+
+        // Then
         io.mockk.coVerify(exactly = 3) { projectDao.insert(any()) }
         io.mockk.coVerify(exactly = 3) { cacheMapper.mapToEntity(any()) }
-        confirmVerified(playlistApi)
+        confirmVerified(projectDao)
 
     }
 }

@@ -1,4 +1,4 @@
-package com.frontparissportifs.utils
+package com.nef.playlist.utils
 
 import android.content.Context
 import android.content.res.Resources

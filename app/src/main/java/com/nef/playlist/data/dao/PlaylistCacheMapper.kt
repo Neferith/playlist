@@ -1,6 +1,6 @@
 package com.nef.playlist.data.dao
 
-import com.frontparissportifs.utils.EntityMapper
+import com.nef.playlist.utils.EntityMapper
 import com.nef.playlist.data.model.PlaylistEntity
 import javax.inject.Inject
 

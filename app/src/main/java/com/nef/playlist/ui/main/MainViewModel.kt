@@ -3,7 +3,7 @@ package com.nef.playlist.ui.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.frontparissportifs.utils.DataState
+import com.nef.playlist.utils.DataState
 import com.nef.playlist.data.model.PlaylistEntity
 import com.nef.playlist.domain.CoroutineDispatcherProvider
 import com.nef.playlist.domain.GetPlaylistsUserCase

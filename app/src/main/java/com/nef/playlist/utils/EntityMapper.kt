@@ -1,4 +1,4 @@
-package com.frontparissportifs.utils
+package com.nef.playlist.utils
 
 interface EntityMapper<Entity, DomainModel> {
     fun mapFromEntity(entity: Entity): DomainModel

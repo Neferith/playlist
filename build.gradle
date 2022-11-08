@@ -17,4 +17,53 @@ plugins {
     id 'com.android.application' version '7.3.1' apply false
     id 'com.android.library' version '7.3.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+    id 'org.jetbrains.kotlinx.kover' version "0.6.0"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+koverMerged {
+    enable()
+
+    filters {
+        classes {
+            excludes.addAll(
+                    // Hilt
+                    "dagger.hilt.*",
+                    "hilt_aggregated_deps.*",
+                    "*_Factory",
+                    "*_Factory\$*",
+                    "*_*Factory",
+                    "*_*Factory\$*",
+                    "*_Impl",
+                    "*_Impl\$*",
+                    "*.DataModule",
+                    "*.DataModule\$*",
+                    "*_MembersInjector",
+                    "*_HiltModules",
+                    "*_HiltModules\$*",
+
+                    // Gradle Generated
+                    "com.nef.playlist.BuildConfig", // TODO: Why Kover doesn't understand tests on BuildConfig ?!
+                    "com.nef.playlist.data.BuildConfigResolver", // Can't mockK static field: https://github.com/mockk/mockk/issues/107
+
+
+                    // TODO : Remove below when Kover can handle Android integration tests!
+                    // Android UI
+                    "*MainApplication",
+                    "*MainApplication\$*",
+                    "*Fragment",
+                    "*Fragment\$*",
+                    "*Activity",
+                    "*Activity\$*",
+                    "*AppDatabase",
+                    "*AppDatabase\$*",
+                    "com.nef.playlist.databinding.*", // ViewBinding
+                    "*Adapter",
+                    "*Adapter\$*"
+            )
+        }
+    }
 }

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.frontparissportifs.utils.DataState
-import com.frontparissportifs.utils.displayError
+import com.nef.playlist.utils.DataState
+import com.nef.playlist.utils.displayError
 import com.nef.playlist.R
 import com.nef.playlist.data.model.PlaylistEntity
 import com.nef.playlist.data.network.hasNetwork
