@@ -15,7 +15,7 @@ import com.nef.playlist.ui.utils.ImageLoader
 import kotlinx.android.synthetic.main.playlist_item.view.*
 
 
-class PlaylistAdapter(val imageLoader: ImageLoader) :
+class PlaylistAdapter(private val imageLoader: ImageLoader) :
     ListAdapter<PlaylistEntity,
             PlaylistAdapter.PlaylistViewHolder>(
     PlaylistDiffCallback
