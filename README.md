@@ -18,5 +18,12 @@
 
 * Glide pour les images : Pour l'affichage des images, j'ai du modifier l'user agent, car sinon le serveur de placeholder.com me retourner une 410. J'ai aussi forcé l'affichage en JPG (En ajoutant .JPG au nom du fichier), car le format par défaut me posait le meme souci.
 
-* Test unitaires : J'ai réalisé des test unitaires sur les trois couches principales Repository, Domain et view model, car ce sont les couches qui structurent l'application. Tout changement important de l'application impacteraient nécessairement ces couches, c'est donc un bon moyen d'identifier d'eventuelles régressions dans l'application.
+## Test unitaires
+
+J'ai réalisé des test unitaires sur les trois couches principales Repository, Domain et view model, car ce sont les couches qui structurent l'application. Tout changement important de l'application impacteraient nécessairement ces couches, c'est donc un bon moyen d'identifier d'eventuelles régressions dans l'application.
+
+## Evolutions possibles
+
+* Ajout d'une fiche détaillée avec plus d'informations.
+* Ne pas charger toutes les données d'un coup. Actuellement, les requetes SQL lite chargent l'ensemble des données. Cela est très rapide. Néanmoins, s'il devait y avoir une plus grande quantité de données, il pourrait être utile de paginer l'ensemble.
 
