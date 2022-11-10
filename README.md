@@ -6,7 +6,7 @@
 
 * Langage utilisé : Kotlin, car c'est aujourd'hui le langage officiel pour développer des applications Android. Mais il serait assez facile de développer une application équivalent en Java.
 
-* Architecture : MVVM qui est une architecture qui permet de bien séparer les données des vues, tout en réduisant les dépendances entre les couches.
+* Architecture : MVVM qui est une architecture qui permet de bien séparer les données des vues, tout en réduisant les dépendances entre les couches. Les données sont séparés du reste de l'application par une couche domain. Pour une application aussi simple, un tel découpage n'est pas forcément nécessaire, mais il s'agissait de démontrer une architecture la plus modulaire possible.
 
 * Retrofit : Permet d'implémenter rapidement l'accès à une API distante et la sérialisation des données.
 
@@ -14,27 +14,7 @@
 
 * Dagger/hilt : Pour l'injection des dépendances.
 
+* Glide pour les images : Pour l'affichage des images, j'ai du modifier l'user agent, car sinon le serveur de placeholder.com me retourner une 410. J'ai aussi forcé l'affichage en JPG (En ajoutant .JPG au nom du fichier), car le format par défaut me posait le meme souci.
 
+* Test unitaires : J'ai réalisé des test unitaires sur les trois couches principales Repository, Domain et view model, car ce sont les couches qui structurent l'application. Tout changement important de l'application impacteraient nécessairement ces couches, c'est donc un bon moyen d'identifier d'eventuelles régressions dans l'application.
 
-
-Votre code doit être versionné sur un dépôt Git librement consultable
-
- 
-
-Nous observerons particulièrement : 
-
-Les choix d'architecture 
-
-Les choix de patterns
-
-Les choix de librairies
-
-Les performances de l'application
-
-Les tests
-
-Nous rejetterons le test si un des éléments suivants n'est pas présent :
-
-Tests unitaires
-
-La gestion des changements de configuration”
