@@ -4,7 +4,7 @@
 
  * Le projet a été compilé avec le SDK 33, avec minSDK 21
 
- * Gestion du offline : Les playlist sont persistées dans une BDD SQLite via le SDK Room. J'ai aussi géré un cache des requetes HTTP, cela peut sembler en doublon avec la BDD, mais cela n'impact pas les performances. Il s'agissait de démontrer que les deux techniques sont possibles. L'utilisation d'une base de donnée SQL Lite pourrait devenir necessaire, s'il l'on voulait persister une plus grande quantité de donnés. A noter que le cache HTTP n'est pas utilisé s'il le device possède une connexion internet et que les données ont été rafraichis, il y a plus de 60 secondes. Les images sont stockés en cache par glide.
+ * Gestion du offline : Les données sont stockées dans une BDD SQLite via le SDK Room. J'ai aussi géré une mise en cache des requêtes HTTP, ce fonctionnement peut paraitre en doublon avec la BDD, mais cela n'impact pas les performances. Il s'agissait de démontrer que les deux techniques sont possibles. L'utilisation d'une base de données pourrait devenir utile, si l’on souhaitait  sauvegarder une grande quantité de données et faire des traitements dessus (Tri, filtre…). A noter que le cache HTTP n'est pas utilisé si le device possède une connexion internet et que les données ont été rafraichies, il y a plus de 60 secondes. Les images sont stockées en cache par Glide.
 
 * Langage utilisé : Kotlin, car c'est aujourd'hui le langage officiel pour développer des applications Android. Mais il serait assez facile de développer une application équivalent en Java.
 
@@ -22,7 +22,7 @@
 
 ## Test unitaires
 
-J'ai réalisé des test unitaires sur les trois couches principales Repository, Domain et view model, car ce sont les couches qui structurent l'application. Tout changement important de l'application impacteraient nécessairement ces couches, c'est donc un bon moyen d'identifier d'eventuelles régressions dans l'application.
+J'ai réalisé des tests unitaires sur les trois couches principales Repository, Domain et view model, car ce sont les couches qui structurent l'application. Tout changement important de l'application impacterait nécessairement ces couches, c'est donc un bon moyen d'identifier d'éventuelles régressions dans l'application.
 
 ## Evolutions possibles
 
