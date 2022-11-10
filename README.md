@@ -8,6 +8,8 @@
 
 * Architecture : MVVM qui est une architecture qui permet de bien séparer les données des vues, tout en réduisant les dépendances entre les couches. Les données sont séparés du reste de l'application par une couche domain. Pour une application aussi simple, un tel découpage n'est pas forcément nécessaire, mais il s'agissait de démontrer une architecture la plus modulaire possible.
 
+## Librairies utilisées
+
 * Retrofit : Permet d'implémenter rapidement l'accès à une API distante et la sérialisation des données.
 
 * Coroutine : Simplifie les traitements asynchrones, avant cela, c'était l'enfer sur Android, même si RX Java était pas mal.
